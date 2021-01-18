@@ -7,13 +7,13 @@
 */
 #include<stdio.h>
 #include<stdlib.h>
-struct node
+struct node						//blueprint of the nodes
 {
 	int data;
 	struct node* left;
 	struct node* right;
-}*root,*ptr;
-struct node* create_node(int item) 
+}*root,*ptr;						//global variables
+struct node* create_node(int item) 			//function to create a node and return it
 { 
     struct node* temp;
     temp=(struct node*)malloc(sizeof(struct node)); 
@@ -51,6 +51,8 @@ struct node* min_node()
 	}
 	return temp;
 }
+
+//function to delete a node
 struct node* delete_node(struct node* ptr, int e)
 {
     // base case
@@ -110,8 +112,9 @@ struct node* search_node(struct node* ptr, int e)
     return 0;
 }
 
-int height(struct node* node); 
-  
+int height(struct node* node); 			//function declaration
+
+//function to check if tree is AVL or not  
 int isBalanced(struct node* root) 
 { 
     int lh; /* for height of left subtree */
@@ -148,10 +151,11 @@ int height(struct node* node)
     if (node == NULL) 
         return 0; 
     
-    //returning the heoght of the tree
+    //returning the height of the tree
     return 1 + max(height(node->left), height(node->right)); 
 }
 
+//functions to display the tree
 void inorder(struct node* ptr) 
 { 
     if (ptr != NULL) 
